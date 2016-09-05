@@ -1,0 +1,29 @@
+{
+  "name": "ie-cors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "babel-polyfill": "^6.13.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-hot-loader": "^3.0.0-beta.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "webpack": "^1.13.2"
+  },
+  "scripts": {
+    "start": "babel-node --presets es2015,stage-0,react server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devdigital/ie-cors.git"
+  },
+  "author": "DevDigital <devdigital.cloud@gmail.com> (http://developmentsindigital.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devdigital/ie-cors/issues"
+  },
+  "homepage": "https://github.com/devdigital/ie-cors#readme"
+}
