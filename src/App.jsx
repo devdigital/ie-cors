@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import apiService from './api-service-jquery'
+import apiService from './api-service'
 
 class App extends Component {
   constructor(props) {
