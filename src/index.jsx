@@ -1,3 +1,4 @@
+// import 'xdomain/dist/xdomain.min'
 import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'

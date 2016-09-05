@@ -29,6 +29,7 @@ namespace Api
           loggerFactory.AddDebug();
 
           app.UseCors("AllowAllOrigins");
+          app.UseStaticFiles();          
           app.UseMvc();
         }
 
@@ -37,7 +38,7 @@ namespace Api
             // Add framework services.
             services.AddMvc();
             services.AddCors(options => {
-              options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin());   
+              options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin());
             });
             services.AddSingleton<IValuesRepository, DefaultValuesRepository>();
         }

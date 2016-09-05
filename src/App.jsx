@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import apiService from './api-service'
+import apiService from './api-service-jquery'
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    apiService.get('http://localhost:5000/api/values')
+    apiService.get('http://10.0.2.2:5000/api/values')
       .then(values => {
         this.setState({
           values,
@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     return (
       <ul>
-        {this.state.values.map(v => <li>{v.number}</li>)}
+        {this.state.values.map((v, i) => <li key={i}>{v.number}</li>)}
       </ul>
     )
   }

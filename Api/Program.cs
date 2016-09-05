@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Api
@@ -9,6 +10,7 @@ namespace Api
         {
             var host = new WebHostBuilder()
                 .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();
 
