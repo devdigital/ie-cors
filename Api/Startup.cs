@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 
 namespace Api
 {
@@ -15,6 +17,7 @@ namespace Api
           var builder = new ConfigurationBuilder()
               .SetBasePath(env.ContentRootPath)
               .AddEnvironmentVariables();
+
           Configuration = builder.Build();
         }
 
@@ -25,6 +28,7 @@ namespace Api
           loggerFactory.AddConsole(Configuration.GetSection("Logging"));
           loggerFactory.AddDebug();
 
+          app.UseCors("AllowAllOrigins");
           app.UseMvc();
         }
 
@@ -32,6 +36,9 @@ namespace Api
         {
             // Add framework services.
             services.AddMvc();
+            services.AddCors(options => {
+              options.AddPolicy("AllowAllOrigins", builder => builder.AllowAnyOrigin());   
+            });
             services.AddSingleton<IValuesRepository, DefaultValuesRepository>();
         }
     }
