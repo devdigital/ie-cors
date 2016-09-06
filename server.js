@@ -12,7 +12,8 @@ const config = webpackService.getConfig({
     filename: '[name].js',
   },
   html: {
-    template: path.resolve(__dirname, './src/html/index.ejs'),
+    title: 'IE Cors Sample',
+    appMountId: 'root',
   },
 })
 
