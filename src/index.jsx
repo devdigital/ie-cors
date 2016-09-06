@@ -1,4 +1,5 @@
-// import 'xdomain/dist/xdomain.min'
+/* eslint-disable import/imports-first */
+import './xdomain'
 import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
