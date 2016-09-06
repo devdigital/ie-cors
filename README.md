@@ -40,9 +40,9 @@ This sample uses an alternative to CORS and `XDomainRequest` to achieve cross or
 
 In order to test on IE < 10, you can either use an online service such as [BrowserStack](https://www.browserstack.com/) or use one of the various [IE virtual images](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) supplied by Microsoft.
 
-For example, you can download the IE9 on Windows 7 image for [VirtualBox](https://www.virtualbox.org/). With VirtualBox and the image imported, you need to configure VirtualBox to allow access to your host machine at `http://localhost:3000` which is where the front-end is available.
+For example, you can download the IE9 on Windows 7 image for [VirtualBox](https://www.virtualbox.org/). With VirtualBox and the image imported, you can select `Machine -> Settings... -> Network -> Adapter 1 -> Attached to: NAT`. Your host machine should then be accessible from `http://10.0.2.2:3000`.
 
-TODO
+The sample configures both `10.0.2.2` and `localhost` as white listed origins for this purpose. You can edit the `onVirtualMachine` flag within `App.jsx` if you wish to test on VirtualBox.
 
 # How it Works
 
@@ -61,7 +61,7 @@ XDomain works with any library that uses `XMLHttpRequest` - this includes jQuery
 
 This sample is a React application which uses [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch) to perform the API request (although a jQuery API service example is also provided).
 
-isomorphic-fetch provides a consistent API on Node and in the browser. It wraps GitHub's [WHATWG Fetch polyfill](https://github.com/github/fetch) which allows the use of `fetch` on browsers that [do not yet support it](http://caniuse.com/#feat=fetch). The WHATWG Fetch polyfill uses `XMLHttpRequest` under the hood - hence XDomain also works with isomorphic-fetch too.
+isomorphic-fetch provides a consistent API on Node and in the browser. It wraps GitHub's [WHATWG Fetch polyfill](https://github.com/github/fetch) which allows the use of `fetch` on browsers that [do not yet support it](http://caniuse.com/#feat=fetch). The WHATWG Fetch polyfill uses `XMLHttpRequest` under the hood - hence **XDomain also works with isomorphic-fetch**.
 
 > Note that you must also use a Promise polyfill in order to use isomorphic-fetch - this sample uses `babel-polyfill`.
 
