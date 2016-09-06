@@ -48,7 +48,12 @@ TODO
 
 The sample uses an open source project called [XDomain](https://github.com/jpillora/xdomain), which is available as an npm package.
 
-XDomain uses an alternative technique to CORS completely, and also avoids the use of IE's `XDomainRequest` object. Underneath the hoods it uses [XHook](https://github.com/jpillora/xhook) to intercept `XMLHttpRequest` calls
+XDomain uses an alternative technique to CORS completely, and also avoids the use of IE's `XDomainRequest` object. Underneath the hoods it uses [XHook](https://github.com/jpillora/xhook) to intercept `XMLHttpRequest` calls:
+
+1. An iframe is created on the `master` (front-end web app) which points to the `slave`'s (API) proxy
+2. `XMLHttpRequest` calls are converted to `postMessage` calls to the iframe
+3. The `slave` code running in the iframe recieves those post messages and converts them to XHR requests (effectively to itself, therefore no CORS issues)
+4. The `slave` takes the responses and communicates them back to the `master` (front-end) via the iframe
 
 Browser support is any browser that has `postMessage` and `JSON` available. This includes IE 8 and 9, **but does not include IE 6 or IE 7**.
 
